@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-
+//Customises all texts in the scene at start
 public class TextEditor : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,11 +12,5 @@ public class TextEditor : MonoBehaviour
         {
             Wiggle w = t.gameObject.AddComponent<Wiggle>();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

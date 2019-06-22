@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+//Moves the leaderboard scores up and down with arrow keys or buttons
 namespace Scoring
 {
     public class ScrollText : MonoBehaviour

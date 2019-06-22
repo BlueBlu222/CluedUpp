@@ -3,27 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+/// <summary>
+/// Main manager singleton class handles the displayed questions
+/// Shows the leaderboard when questions are complete
+/// Plays all sounds and controls all animated text
+/// Loads and stores questions in and out of a json file. You can set the json file in the inspector
+/// </summary>
 namespace Scoring
 {
     public class GameManager : MonoBehaviour
     {
+        static GameManager singleton;
+        //Visual feedback class
         MoveRight mr;
+        //Audio source and clips
         AudioSource aso;
         public AudioClip correct, incorrect;
+        //Texts to update
         public TextMeshProUGUI questionText, timeText;
         public TextMeshProUGUI[] buttons;
+        //Lists of questions, the question number, current question index and current answer.
         public List<Question> questions;
         List<Question> loadedQuestions;
         int questionNumber = -1, currentQuestion = 0;
-        public static int score = 0;
         string correctAnswer;
+        //Current score and leaderboard gameobject
+        public static int score = 0;
         public static GameObject leaderboard;
-        static string json;
+        //QuesionsJson data
+        public string json;
         QuestionsJson qj;
+        //Time to wait between each question
         public float spinTime = 5;
         void Start()
         {
+            if(singleton == null)
+            {
+                singleton = this;
+            }  else if (singleton != this)
+            {
+                Destroy(this);
+                return;
+            }
             mr = FindObjectOfType<MoveRight>();
             aso = GetComponent<AudioSource>();
             if (aso == null)
@@ -82,6 +103,7 @@ namespace Scoring
             if (buttons.Length != 4)
             {
                 Debug.LogError("set up buttons in the game manager " + buttons.Length);
+                //Not usable now that restart button is in scene
                 /* Button[] tempB = FindObjectsOfType<Button>();
                  if (tempB.Length == 4)
                  {
@@ -112,7 +134,7 @@ namespace Scoring
             completionTime = 0;
             LoadNextQuestion();
         }
-        //Not gonna work
+        //Called by each button OnClick
         public void Submit(string myAnswer)
         {
             if (!Wiggle.canSpin)
@@ -136,6 +158,7 @@ namespace Scoring
                 StartCoroutine(VisualFeedback());
             }
         }
+        //Alows time for visual feedback
         IEnumerator VisualFeedback()
         {
             Wiggle.canSpin = true;

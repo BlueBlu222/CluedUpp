@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+///Continuously moves an object to the right
+///Used for visual feedback after answering a question
 
 public class MoveRight : MonoBehaviour
 {

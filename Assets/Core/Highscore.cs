@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+/// <summary>
+/// Class for the scores when displayed on leaderboard.
+/// Capable of readjusting position after Place or addedPos is updated
+/// </summary>
 namespace Scoring
 {
     public class Highscore : MonoBehaviour

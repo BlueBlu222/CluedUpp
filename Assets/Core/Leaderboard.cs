@@ -2,6 +2,9 @@
 using System.Linq;
 using UnityEngine;
 using TMPro;
+///Large singleton class for controlling the leaderboard
+///Orders all scores when game object is enabled
+///Saves them into and loads them from a json file
 namespace Scoring
 {
     public class Leaderboard : MonoBehaviour
@@ -42,7 +45,6 @@ namespace Scoring
             winText.text = (win) ? "Win" : "Lose";
             winText.color = (win) ? Color.green : Color.red;
         }
-        int nothing = 1;
         void CreateScores()
         {
             if (scores != null && scores.savedScores.Count >= 0)

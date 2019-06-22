@@ -1,4 +1,7 @@
 ﻿using System;
+/// <summary>
+/// Serializable class to store scores with their completion time and username
+/// </summary>
 [Serializable]
 public class Score : IComparable
 {

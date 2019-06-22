@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-
+//Gives an object a vibrate and spin effect
 public class Wiggle : MonoBehaviour
 {
     public float speed = 100;
